@@ -1,18 +1,82 @@
-# TombaRecomp
+# TOMBI! PAL Italiano — TombaRecomp
 
-> _This recompilation is a **byproduct of developing
-> [psxrecomp](https://github.com/mstan/psxrecomp)** — the games are the proving ground, the framework is the goal.
-> **These are in-development previews, not finished ports — expect rough
-> edges**, and depth will keep landing over months, not days. My time for any
-> one title is limited, so I ask for your patience. Contributions are welcome —
-> testing, issues, and PRs to the game or framework all help and will
-> accelerate this game's polish. More on the why at:
-> [Recomp + AI: 5 Months Later »](https://1379.tech/recomp-ai-5-months-later/)_
+> **Progetto sperimentale / Work in progress.** Questo branch mira ad adattare la ricompilazione statica di **TOMBI!** (edizione europea PAL, con particolare attenzione alla versione italiana) per l'esecuzione nativa su PC. **Non è una release giocabile verificata** e non va confuso con il port USA già documentato dal progetto originale.
 
-Tomba! (USA, SCUS-94236) statically recompiled to a native PC executable with
-[PSXRecomp](https://github.com/mstan/psxrecomp).
+[![Based on TombaRecomp](https://img.shields.io/badge/Upstream-mstan%2FTombaRecomp-blue)](https://github.com/mstan/TombaRecomp)
+[![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/License-PolyForm%20Noncommercial%201.0.0-informational)](LICENSE)
 
-[![PSXRecomp demo](https://img.youtube.com/vi/CID9oVhgCyY/maxresdefault.jpg)](https://www.youtube.com/watch?v=CID9oVhgCyY)
+**Responsabile del fork e delle attività PAL/italiano:** [roccordx](https://github.com/roccordx)  
+**Base tecnica e progetto originale:** [Matthew Stanley — mstan/TombaRecomp](https://github.com/mstan/TombaRecomp), sviluppato insieme al framework [PSXRecomp](https://github.com/mstan/psxrecomp).
+
+## Obiettivo
+
+Il progetto originale ricompila staticamente **Tomba! USA (SCUS-94236)**. Questo branch estende il lavoro per studiare e realizzare una pipeline separata per **TOMBI! PAL (SCES-01330)**, puntando a eseguire correttamente la versione europea/italiana senza sostituire contenuti, logica e testi del gioco con quelli USA.
+
+La ricompilazione statica trasforma in anticipo codice MIPS della PlayStation in codice C compilabile per sistemi moderni, appoggiandosi alla simulazione dell'hardware PS1 fornita dal framework originale. Il supporto PAL deve essere validato specificamente: il funzionamento della versione USA **non garantisce** quello dell'edizione PAL.
+
+## Stato del branch (21 ottobre 2026)
+
+| Componente | Stato |
+| --- | --- |
+| Base TombaRecomp USA e framework PSXRecomp | Derivati dall'upstream; funzionalità USA documentate più sotto |
+| Configurazione PAL `SCES-01330` | Presente (iniziale) |
+| Configurazione compilazione separata `pal_ita/CMakeLists.txt` | Presente |
+| Seed iniziali di funzioni MIPS `pal_ita/seeds/ghidra_funcs.txt` | Presenti; scansione preliminare dei target JAL |
+| Generazione completa codice PAL, compilazione e avvio | **Da verificare** |
+| Intro, menu, audio, testi italiani, salvataggi e gameplay PAL | **Non ancora verificati** |
+| Compatibilità delle mod e ottimizzazioni USA con PAL | **Non ancora verificata** |
+
+Il branch non annuncia al momento un eseguibile italiano pronto per gli utenti. La versione `v0.20.1-alpha` citata nella documentazione upstream riguarda **Tomba! USA** e non costituisce una release PAL.
+
+## File e configurazione PAL
+
+- `game-pal.toml` — configurazione PAL dalla radice del repository.
+- `pal_ita/game.toml` — configurazione PAL associata al layout specifico.
+- `pal_ita/CMakeLists.txt` — target runtime sperimentale PAL che si appoggia al framework.
+- `pal_ita/seeds/ghidra_funcs.txt` — elenco iniziale degli indirizzi delle funzioni individuati per l'eseguibile PAL.
+- `pal_ita/disc/` — directory locale per il dump legittimo del gioco; **esclusa da Git**.
+- `pal_ita/generated/` e `pal_ita/build/` — output locali, **esclusi da Git**.
+
+Le configurazioni riportano l'ID `SCES-01330`, l'eseguibile `SCES_013.30` e l'entry point `0x8001E1F4`. Questi parametri sono un punto di partenza tecnico, non una certificazione di compatibilità completa.
+
+### Ambiente di sviluppo
+
+L'attività PAL viene svolta anche su un ambiente Linux/container ospitato su NAS QNAP, con checkout del fork, submodule Git e strumenti di compilazione. **I percorsi del NAS, le ROM, le immagini BIOS e le chiavi SSH non fanno parte di questo repository.** Prima di indicare una procedura PAL riproducibile per tutti, occorre convalidare l'intera catena di build e i percorsi specifici.
+
+Per recuperare il codice sorgente e i suoi submodule:
+
+```bash
+git clone --recurse-submodules --branch feature/tombi-pal-italiano https://github.com/roccordx/TombaRecomp.git
+cd TombaRecomp
+git submodule update --init --recursive
+```
+
+**Attenzione:** le istruzioni di compilazione USA riportate nella sezione storica seguente non possono essere applicate automaticamente al gioco PAL; includono `SCUS_942.36`, configurazioni e asset validati per la versione americana.
+
+## Crediti e genealogia del progetto
+
+| Contributo | Autore / progetto |
+| --- | --- |
+| Progetto originale TombaRecomp, pipeline del gioco USA e integrazione | [Matthew Stanley (mstan)](https://github.com/mstan/TombaRecomp) |
+| Framework di ricompilazione PS1 | [PSXRecomp](https://github.com/mstan/psxrecomp) |
+| Fork, studio e configurazione iniziale TOMBI! PAL/italiano | [roccordx](https://github.com/roccordx/TombaRecomp/tree/feature/tombi-pal-italiano) |
+| Altre dipendenze e contributori | Rispettivi progetti, autori, file LICENSE e avvisi inclusi nel repository/submodule |
+
+Questa derivazione **non è un progetto ufficiale**, non è sponsorizzata né approvata dagli autori del videogioco o dai manutentori dell'upstream. Le modifiche di questo branch non vanno attribuite a Matthew Stanley; analogamente, il lavoro originale di mstan e degli altri contributori resta loro riconosciuto.
+
+## Licenze, copyright e contenuti del gioco
+
+- **Codice di TombaRecomp:** resta soggetto alla licenza [PolyForm Noncommercial 1.0.0](LICENSE), con l'avviso `Copyright (c) 2026 Matthew Stanley` mantenuto nel file LICENSE originale. Il fork non rimuove né sostituisce quell'avviso. La licenza non concede automaticamente impieghi commerciali.
+- **Framework e dipendenze:** eventuali licenze proprie restano applicabili; ad esempio il progetto upstream documenta **OpenBIOS** (PCSX-Redux) con avviso MIT in `bios/OpenBIOS.LICENSE` quando distribuito.
+- **TOMBI!/Tomba!:** marchi, personaggi, codice e contenuti del videogioco appartengono ai rispettivi titolari dei diritti, indicati nel progetto upstream come **Whoopee Camp / Sony Computer Entertainment**. Il repository non concede diritti su tali materiali.
+- **Materiali esclusi:** nessuna immagine del disco, dump BIOS retail, asset originali, codice generato dalla ROM, file di salvataggio o catture contenenti byte del gioco devono essere caricati in questo repository. L'utente deve procurarsi legittimamente i propri materiali, nel rispetto della normativa applicabile.
+- **Redistribuzione:** prima di pubblicare qualsiasi eseguibile o cache derivata dal gioco serve una valutazione specifica dei diritti e delle condizioni applicabili. Un codice ricompilato può contenere espressione protetta dal copyright: il solo fatto di averlo tradotto non ne autorizza automaticamente la diffusione.
+
+## Documentazione originale USA
+
+La documentazione a seguire è preservata come **riferimento tecnico storico dell'upstream**, non come elenco di funzionalità già operative sulla versione PAL. Include architettura, funzionalità, istruzioni di build USA, controlli, cache e avvisi originali. Per novità e rilasci americani consultare direttamente [mstan/TombaRecomp](https://github.com/mstan/TombaRecomp).
+
+---
 
 ## What This Is
 
