@@ -64,3 +64,9 @@ tools/_toolchain_cache/
 /disc/
 /bios/
 /dist/
+
+# TOMBI! PAL - local copyrighted and generated files
+/pal_ita/disc/
+/pal_ita/build/
+/pal_ita/generated/
+/git-audit-tombi.txt

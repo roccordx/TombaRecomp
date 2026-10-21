@@ -1,0 +1,31 @@
+# TOMBI! European PAL Rev 1 - initial recompilation configuration
+# Boot executable: SCES_013.30
+
+[game]
+name = "TOMBI! Recompiled"
+id = "SCES-01330"
+players = 1
+exe = "pal_ita/disc/SCES_013.30"
+load_address = "0x80010000"
+entry_pc = "0x8001E1F4"
+text_size = "0x0009E800"
+stack_base = "0x801FFFF0"
+
+[recompiler]
+seeds = "pal_ita/seeds/ghidra_funcs.txt"
+out_dir = "pal_ita/generated"
+strict = true
+
+[runtime]
+window_title = "TOMBI! Recompiled PAL"
+memcard_dir = "saves-pal"
+overlay_cache = true
+
+[video]
+renderer = "opengl"
+auto_skip_fmv = false
+offer_skip_fmv = false
+aspect_ratio = "4:3"
+
+[controller]
+default_mode = "digital"
