@@ -26,7 +26,12 @@ La ricompilazione statica trasforma in anticipo codice MIPS della PlayStation in
 | Configurazione PAL `SCES-01330` | Presente (iniziale) |
 | Configurazione compilazione separata `pal_ita/CMakeLists.txt` | Presente |
 | Seed iniziali di funzioni MIPS `pal_ita/seeds/ghidra_funcs.txt` | Presenti; scansione preliminare dei target JAL |
-| Generazione completa codice PAL, compilazione e avvio | **Da verificare** |
+| Generazione codice C PAL | **Completata nell'ambiente QNAP** |
+| Compilazione runtime PAL su Linux | **Completata** — binario `TOMBI__Recompiled_PAL` prodotto |
+| Backend BIOS OpenBIOS e SCPH-1001 | **Collegati e verificati nel binario** |
+| Caricamento BIOS SCPH-1001 e riconoscimento disco PAL | **Confermati nei log** |
+| Avvio runtime headless | **Confermato** — test interrotto dopo 30 secondi (timeout 124) |
+| Raggiungimento dell'entry point PAL e avvio effettivo del gioco | **Non ancora verificati** |
 | Intro, menu, audio, testi italiani, salvataggi e gameplay PAL | **Non ancora verificati** |
 | Compatibilità delle mod e ottimizzazioni USA con PAL | **Non ancora verificata** |
 
@@ -56,6 +61,23 @@ git submodule update --init --recursive
 ```
 
 **Attenzione:** le istruzioni di compilazione USA riportate nella sezione storica seguente non possono essere applicate automaticamente al gioco PAL; includono `SCUS_942.36`, configurazioni e asset validati per la versione americana.
+
+## Documentazione tecnica PAL
+
+La pipeline PAL è in fase sperimentale. La generazione del codice e
+la compilazione Linux sono state completate nell'ambiente QNAP,
+ma la riproducibilità da checkout pulito e il gameplay restano
+da verificare.
+
+- [Stato del progetto](docs/pal-italiano/STATUS.md) — risultati e problemi aperti.
+- [Guida alla compilazione](docs/pal-italiano/BUILD.md) — generazione e build Linux.
+- [Configurazione BIOS](docs/pal-italiano/BIOS.md) — SCPH-1001 e test runtime.
+- [Registro delle modifiche](docs/pal-italiano/CHANGELOG.md) — avanzamento tecnico.
+- [`tools/regen-pal.sh`](tools/regen-pal.sh) — script di rigenerazione PAL.
+- [`AGENTS.md`](AGENTS.md) — istruzioni operative per Codex.
+
+**Nota:** il completamento della compilazione non dimostra che
+TOMBI! PAL sia già giocabile.
 
 ## Crediti e genealogia del progetto
 

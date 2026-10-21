@@ -70,3 +70,6 @@ tools/_toolchain_cache/
 /pal_ita/build/
 /pal_ita/generated/
 /git-audit-tombi.txt
+
+# TOMBI! PAL - salvataggi e dati locali
+/pal_ita/saves-pal/
