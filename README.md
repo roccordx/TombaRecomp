@@ -1,3 +1,7 @@
+<p align="center">
+  <img src=".github/TOMBI%21_PAL_Italian.png" alt="TOMBI! PAL Italian project banner" width="900">
+</p>
+
 # TOMBI! PAL Italiano — TombaRecomp
 
 > **Progetto sperimentale / Work in progress.** Questo branch mira ad adattare la ricompilazione statica di **TOMBI!** (edizione europea PAL, con particolare attenzione alla versione italiana) per l'esecuzione nativa su PC. **Non è una release giocabile verificata** e non va confuso con il port USA già documentato dal progetto originale.
