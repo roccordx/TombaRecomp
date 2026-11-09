@@ -2,6 +2,10 @@
 
 Ultimo aggiornamento: 21 ottobre 2026
 
+## 22 ottobre 2026 — Build Windows PAL locale
+
+La build incrementale Release è riuscita con MSVC. Nel test headless il runtime ha riconosciuto SCES-01330 e il timing PAL a 50 Hz. La build dipendeva da modifiche locali al motore e alla configurazione PAL. La riproducibilità con il pin pubblico resta da verificare. I risultati e i limiti di quella sessione sono in [WINDOWS_BUILD.md](WINDOWS_BUILD.md).
+
 ## Obiettivo
 
 Adattare TombaRecomp alla versione europea PAL di TOMBI!,

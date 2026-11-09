@@ -11,6 +11,12 @@ non implica che il gioco sia già funzionante.
 - Identificata la revisione SCPH-1002 v2.0 PAL.
 - Documentati i prerequisiti per generare un backend dedicato. Collegamento e confronto prestazionale restano da verificare.
 
+## 22 ottobre 2026 — Build Windows PAL locale
+
+- Compilazione e linking Release riusciti con correzioni locali al motore e alla configurazione PAL.
+- Riconoscimento di SCES-01330 e timing a 50 Hz verificati nel test headless.
+- Riproducibilità con il motore pubblico ancora da verificare. Vedere [WINDOWS_BUILD.md](WINDOWS_BUILD.md).
+
 ## 21 ottobre 2026 — Compilazione PAL su Linux
 
 ### Completato
