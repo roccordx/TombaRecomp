@@ -130,3 +130,9 @@ Non includere nel repository pubblico:
 - docs/pal-italiano/BUILD.md.
 - psxrecomp/bios/SCPH1001.toml.
 - psxrecomp/tools/regen_bios.sh.
+
+## Valutazione SCPH-1002 — 22 ottobre 2026
+
+L'immagine locale è stata identificata come SCPH-1002 v2.0 PAL tramite dimensione e checksum. Il generatore accetta profili dedicati e verifica l'identità dell'immagine. Il profilo SCPH-1001 riguarda una revisione USA distinta.
+
+Nel checkout esaminato mancavano profilo, seed e modello degli indirizzi verificati per SCPH-1002. La build Windows dell'epoca collegava OpenBIOS e SCPH-1001. Nessun backend SCPH-1002 è stato generato o collegato in quella verifica. Il confronto prestazionale tra i due BIOS resta da eseguire in condizioni controllate.

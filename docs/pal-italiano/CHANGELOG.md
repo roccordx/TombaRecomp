@@ -6,6 +6,11 @@ alla versione europea PAL di TOMBI!.
 Il progetto è sperimentale: una compilazione riuscita
 non implica che il gioco sia già funzionante.
 
+## 22 ottobre 2026 — Valutazione SCPH-1002
+
+- Identificata la revisione SCPH-1002 v2.0 PAL.
+- Documentati i prerequisiti per generare un backend dedicato. Collegamento e confronto prestazionale restano da verificare.
+
 ## 21 ottobre 2026 — Compilazione PAL su Linux
 
 ### Completato
