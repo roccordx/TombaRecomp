@@ -70,7 +70,21 @@ Non dichiarare il gioco giocabile senza test reali.
 3. Non sovrascrivere configurazioni USA senza necessità.
 4. Non eseguire reset, clean o checkout distruttivi.
 5. Verificare git status prima e dopo ogni modifica.
-6. Non effettuare commit o push senza autorizzazione.
+6. Sul solo branch `feature/tombi-pal-italiano` del fork
+   `roccordx/TombaRecomp` sono autorizzati in modo permanente commit locali
+   piccoli per unità di lavoro verificate e push periodici tramite `origin`.
+   L'autorizzazione vale dopo aver verificato il branch corrente e l'URL di
+   push di `origin`. Per ogni altro repository, remoto o branch serve
+   autorizzazione esplicita.
+   Inserire nello staging solo file e modifiche approvati, con percorsi
+   espliciti. Escludere `TOMBI-PAL-ITALIANO-v2/`, i submodule e gli
+   artefatti locali. Restano in vigore i divieti sui materiali proprietari,
+   ROM, BIOS, dump, credenziali e dati privati.
+   Prima di ogni push, aggiornare il riferimento remoto autorizzato e
+   verificare che la sua punta sia un antenato di HEAD. Fermarsi se il
+   remoto manca, è avanzato o diverge. Usare sempre un refspec esplicito.
+   Questa autorizzazione esclude force push, merge su `master`,
+   aggiornamenti di tag e creazione o pubblicazione di release.
 7. Non modificare automaticamente i riferimenti submodule.
 8. Documentare i risultati verificati e le limitazioni.
 9. Distinguere compilazione riuscita da gameplay funzionante.
